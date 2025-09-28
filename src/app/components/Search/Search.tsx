@@ -1,3 +1,4 @@
+import { memo } from "react";
 import s from "./Search.module.scss";
 
 type SearchProps = {
@@ -5,16 +6,20 @@ type SearchProps = {
   query: string;
 };
 
-const Search = ({ onChange, query }: SearchProps) => (
-  <div className={s.root}>
-    <input
-      type="text"
-      onChange={(e) => onChange(e.target.value)}
-      className={s.input}
-      placeholder="Поиск по талантам"
-      value={query}
-    />
-  </div>
-);
+const Search = memo(({ onChange, query }: SearchProps) => {
+  return (
+    <div className={s.root}>
+      <input
+        type="text"
+        onChange={(e) => onChange(e.target.value)}
+        className={s.input}
+        placeholder="Поиск по талантам"
+        value={query}
+      />
+    </div>
+  );
+});
+
+Search.displayName = "Search";
 
 export { Search };

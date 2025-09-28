@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useCallback, useState, useTransition } from "react";
 import { Search } from "./components/Search";
 import { SkillsList } from "./components/SkillsList";
 import { SkillType } from "./types";
@@ -13,16 +13,19 @@ export default function IndexPage({ data }: { data: SkillType[] }) {
   const [query, setQuery] = useState("");
   const [isPending, startTransition] = useTransition();
 
-  const handleFilterData = (value: string) => {
-    setQuery(value);
-    startTransition(() => {
-      const skillsData = data.filter(
-        (item) => item.name && item.name.toLowerCase().includes(value)
-      );
+  const handleFilterData = useCallback(
+    (value: string) => {
+      setQuery(value);
+      startTransition(() => {
+        const skillsData = data.filter(
+          (item) => item.name && item.name.toLowerCase().includes(value)
+        );
 
-      setFilteredData(skillsData);
-    });
-  };
+        setFilteredData(skillsData);
+      });
+    },
+    [data]
+  );
 
   return (
     <section className={s.root}>
