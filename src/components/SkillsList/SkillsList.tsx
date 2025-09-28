@@ -1,5 +1,6 @@
-import { SkillType } from "@/app/types";
-import { hightLightWord } from "@/app/utils/hightlightWord";
+import { SkillType } from "@/types";
+
+import { hightLightWord } from "@/utils/hightlightWord";
 import s from "./SkillsList.module.scss";
 
 type SkillsListProps = {

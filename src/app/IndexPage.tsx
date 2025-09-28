@@ -1,12 +1,13 @@
 "use client";
 
 import { useCallback, useState, useTransition } from "react";
-import { Search } from "./components/Search";
-import { SkillsList } from "./components/SkillsList";
-import { SkillType } from "./types";
 
+import { SkillType } from "../types";
+
+import { Search } from "@/components/Search";
+import { SkillsList } from "@/components/SkillsList";
+import { Wrapper } from "@/components/Wrapper";
 import s from "./IndexPage.module.scss";
-import { Wrapper } from "./components/Wrapper";
 
 export default function IndexPage({ data }: { data: SkillType[] }) {
   const [filteredData, setFilteredData] = useState(data);
@@ -17,8 +18,8 @@ export default function IndexPage({ data }: { data: SkillType[] }) {
     (value: string) => {
       setQuery(value);
       startTransition(() => {
-        const skillsData = data.filter(
-          (item) => item.name && item.name.toLowerCase().includes(value)
+        const skillsData = data.filter((item) =>
+          item.name.toLowerCase().includes(value)
         );
 
         setFilteredData(skillsData);
@@ -30,6 +31,7 @@ export default function IndexPage({ data }: { data: SkillType[] }) {
   return (
     <section className={s.root}>
       <Wrapper>
+        {/* <SvgSkillsTree /> */}
         <Search onChange={handleFilterData} query={query} />
         {isPending ? (
           <div>Поиск...</div>
