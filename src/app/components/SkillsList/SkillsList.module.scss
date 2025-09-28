@@ -1,0 +1,42 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 auto;
+}
+
+.item {
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 16px;
+  border: 1px solid #222222;
+}
+
+.imageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.name mark {
+  background: yellow;
+}
+
+.total {
+  margin-bottom: 24px;
+}
+
+.total span {
+  font-weight: bold;
+}
