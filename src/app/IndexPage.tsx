@@ -6,6 +6,7 @@ import { SkillType } from "../types";
 
 import { Search } from "@/components/Search";
 import { SkillsList } from "@/components/SkillsList";
+import { SvgSkillsTree } from "@/components/SvgSkillsTree";
 import { Wrapper } from "@/components/Wrapper";
 import s from "./IndexPage.module.scss";
 
@@ -31,7 +32,7 @@ export default function IndexPage({ data }: { data: SkillType[] }) {
   return (
     <section className={s.root}>
       <Wrapper>
-        {/* <SvgSkillsTree /> */}
+        <SvgSkillsTree />
         <Search onChange={handleFilterData} query={query} />
         {isPending ? (
           <div>Поиск...</div>
